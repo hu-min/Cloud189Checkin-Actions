@@ -53,7 +53,7 @@ jobs:
         else
         echo "共有 $user_num 个账号，即将开始签到"
         fi
-
+        out=`
         for ((i=0;i<$user_num;i++))
         do
         python3 C189Checkin.py <<EOF
@@ -61,3 +61,5 @@ jobs:
         ${pwd_list[$i]}
         EOF
         done
+        `
+        curl "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg= $out "
