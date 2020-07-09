@@ -47,8 +47,7 @@ def main():
         description = response.json()['description']
         print(f"抽奖获得{description}")
 wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi?title=天翼云签到&msg="
-wxapi2 = wxapi + {netdiskBonus} + {description}
-req = requests.get(wxapi2)
+req = requests.get(wxapi2 + response.json()['netdiskBonus'])
 
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 def int2char(a):
