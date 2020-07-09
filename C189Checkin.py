@@ -1,4 +1,4 @@
-import requests, time, re, rsa, json, base64
+import requests, time, re, rsa, json, base64, urllib2
 from urllib import parse
 
 s = requests.Session()
@@ -46,6 +46,9 @@ def main():
     else:
         description = response.json()['description']
         print(f"抽奖获得{description}")
+wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi?title=天翼云签到&msg="
+wxapi2 = wxapi + netdiskBonus +description
+req = urllib2.urlopen(wxapi2)
 
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 def int2char(a):
