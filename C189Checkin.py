@@ -48,8 +48,8 @@ def main():
     else:
         description = response.json()['description']
         print(f"抽奖获得{description}")
-wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi?title=天翼云签到&msg="
-req = requests.get(wxapi +"签到已经完成！")
+        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi?title=天翼云签到&msg="
+        req = requests.get(wxapi +"签到已经完成！")
 
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 def int2char(a):
