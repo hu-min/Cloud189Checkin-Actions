@@ -23,7 +23,7 @@ def main():
         "Accept-Encoding" : "gzip, deflate",
     }
     response = s.get(surl,headers=headers)
-    golbal netdiskBonus
+    global netdiskBonus
     netdiskBonus = response.json()['netdiskBonus']
     if(response.json()['isSign'] == "false"):
         print(f"未签到，签到获得{netdiskBonus}M空间")
@@ -35,7 +35,7 @@ def main():
         "Host" : "m.cloud.189.cn",
         "Accept-Encoding" : "gzip, deflate",
     }
-    golbal description
+    global description
     response = s.get(url,headers=headers)
     if ("errorCode" in response.text):
         print(response.text)
