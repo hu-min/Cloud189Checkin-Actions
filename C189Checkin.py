@@ -26,12 +26,12 @@ def main():
     netdiskBonus = response.json()['netdiskBonus']
     if(response.json()['isSign'] == "false"):
         print(f"未签到，签到获得{netdiskBonus}M空间")
-        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=签到已经完成！签到获得" + {netdiskBonus} + "M 空间"
-        req = requests.get(wxapi)
+        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg="
+        req = requests.get(wxapi + "签到已经完成！签到获得 netdiskBonus M 空间")
     else:
         print(f"已经签到过了，签到获得{netdiskBonus}M空间")
-        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=已经签到过了！签到获得" + {netdiskBonus} + "M 空间"
-        req = requests.get(wxapi)
+        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg="
+        req = requests.get(wxapi + "已经签到过了！签到获得 netdiskBonus M 空间")
     headers = {
         'User-Agent':'Mozilla/5.0 (Linux; Android 5.1.1; SM-G930K Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.136 Mobile Safari/537.36 Ecloud/8.6.3 Android/22 clientId/355325117317828 clientModel/SM-G930K imsi/460071114317824 clientChannelId/qq proVersion/1.0.6',
         "Referer" : "https://m.cloud.189.cn/zhuanti/2016/sign/index.jsp?albumBackupOpened=1",
@@ -44,16 +44,17 @@ def main():
     else:
         description = response.json()['description']
         print(f"抽奖获得{description}")
-        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=抽奖获得" + {description}
-        req = requests.get(wxapi)
+        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg="
+        req = requests.get(wxapi + "抽奖获得 description ")
     response = s.get(url2,headers=headers)
     if ("errorCode" in response.text):
         print(response.text)
     else:
         description = response.json()['description']
         print(f"抽奖获得{description}")
-        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=抽奖获得" + {description}
-        req = requests.get(wxapi)
+        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg="
+        req = requests.get(wxapi +"抽奖获得" + description )
+        print(req)
 
 BI_RM = list("0123456789abcdefghijklmnopqrstuvwxyz")
 def int2char(a):
@@ -138,4 +139,3 @@ def login(username, password):
 
 if __name__ == "__main__":
     main()
-
