@@ -26,7 +26,7 @@ def main():
     netdiskBonus = response.json()['netdiskBonus']
     if(response.json()['isSign'] == "false"):
         print(f"未签到，签到获得{netdiskBonus}M空间")
-        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi?title=天翼云签到&msg="
+        wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg="
         req = requests.get(wxapi +"签到已经完成！签到获得 {netdiskBonus}M 空间")
     else:
         print(f"已经签到过了，签到获得{netdiskBonus}M空间")
