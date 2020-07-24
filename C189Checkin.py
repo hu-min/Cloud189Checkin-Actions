@@ -26,11 +26,13 @@ def main():
     netdiskBonus = response.json()['netdiskBonus']
     if(response.json()['isSign'] == "false"):
         print(f"未签到，签到获得{netdiskBonus}M空间")
-		req = requests.get("http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=未签到，签到获得{netdiskBonus}M空间")																				  
+	url11="http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=未签到，签到获得{netdiskBonus}M空间"
+	req = requests.get(url11)																				  
 																								  
     else:
         print(f"已经签到过了，签到获得{netdiskBonus}M空间")
-		req = requests.get("http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=已经签到过了，签到获得{netdiskBonus}M空间")																				  
+	url12="http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=已经签到过了，签到获得{netdiskBonus}M空间"
+	req = requests.get(url12)																				  
 																								  
     headers = {
         'User-Agent':'Mozilla/5.0 (Linux; Android 5.1.1; SM-G930K Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.136 Mobile Safari/537.36 Ecloud/8.6.3 Android/22 clientId/355325117317828 clientModel/SM-G930K imsi/460071114317824 clientChannelId/qq proVersion/1.0.6',
@@ -44,7 +46,8 @@ def main():
     else:
         description = response.json()['description']
         print(f"抽奖获得{description}")
-		req = requests.get("http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=抽奖获得{description}M空间")																				  
+	url13="http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=抽奖获得{description}M空间"
+	req = requests.get(url13)																				  
 																 
     response = s.get(url2,headers=headers)
     if ("errorCode" in response.text):
@@ -52,7 +55,8 @@ def main():
     else:
         description = response.json()['description']
         print(f"抽奖获得{description}")
-		req = requests.get("http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=抽奖获得{description}M空间")																				  
+	url14="http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到&msg=抽奖获得{description}M空间"
+	req = requests.get(url14)																				  
 																
 				  
 
