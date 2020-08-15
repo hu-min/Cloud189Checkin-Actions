@@ -26,12 +26,12 @@ def main():
     netdiskBonus = response.json()['netdiskBonus']
     if(response.json()['isSign'] == "false"):
         print(f"未签到，签到获得{netdiskBonus}M空间")
-        now = "\n" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        now = "\n时间:" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到（" + str(username) + "）&msg=签到已经完成！签到获得"
         req = requests.get(wxapi + str(netdiskBonus) + "M空间" + str(now))
     else:
         print(f"已经签到过了，签到获得{netdiskBonus}M空间")
-        now = "\n" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        now = "\n时间:" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到（" + str(username) + "）&msg=已经签到过了，签到获得"
         req = requests.get(wxapi + str(netdiskBonus) + "M空间" + str(now))
     headers = {
@@ -45,7 +45,7 @@ def main():
         print(response.text)
     else:
         description = response.json()['description']
-        now = "\n" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        now = "\n时间:" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         print(f"抽奖获得{description}")
         wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到（" + str(username) + "）&msg=抽奖获得"
         req = requests.get(wxapi + str(description) + str(now))
@@ -55,7 +55,7 @@ def main():
     else:
         description = response.json()['description']
         print(f"抽奖获得{description}")
-        now = "\n" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        now = "\n时间:" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到（" + str(username) + "）&msg=抽奖获得"
         req = requests.get(wxapi + str(description) + str(now))
 
