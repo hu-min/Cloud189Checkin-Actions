@@ -1,5 +1,8 @@
-import requests, time, re, rsa, json, base64
+import os requests, time, re, rsa, json, base64 datetime
 from urllib import parse
+
+os.environ['TZ'] = 'Asia/Shanghai'
+time.tzset()
 
 s = requests.Session()
 
@@ -27,6 +30,8 @@ def main():
     if(response.json()['isSign'] == "false"):
         print(f"未签到，签到获得{netdiskBonus}M空间")
         now = "\n时间:" + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        timenow = (datetime.datetime.utcnow() + datetime.timedelta(hours=8)) #将utc时间转化为本地时间
+        timetext = timenow.strftime('%Y-%m-%d %H:%M:%S')
         wxapi = "http://tqay.com/wxsms.php?token=apitokenisapi&title=天翼云签到（" + str(username) + "）&msg=签到已经完成！签到获得"
         req = requests.get(wxapi + str(netdiskBonus) + "M空间" + str(now))
     else:
