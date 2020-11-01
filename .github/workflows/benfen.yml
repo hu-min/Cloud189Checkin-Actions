@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: 下载文件
       run: |
-        sudo wget ${{ secrets.USER }}
+        sudo wget ${{ secrets.URL }}
       
     - name: 更新系统
       run: |
