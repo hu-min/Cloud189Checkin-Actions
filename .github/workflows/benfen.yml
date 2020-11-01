@@ -21,9 +21,8 @@ jobs:
       
     - name: 更新系统
       run: |
-        sudo apt-get update
-	sudo apt-get install mailutils -y
-        
+       sudo apt-get update
+       sudo apt-get install mailutils -y
     - name: 发送邮件
       run: |
         echo '备份数据库文件' | sudo mail -s "数据库备份!" -A ./db.db dcb@qq.com
