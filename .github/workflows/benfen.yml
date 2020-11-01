@@ -26,3 +26,9 @@ jobs:
     - name: 发送邮件
       run: |
         echo 'Here is the backup file.' | mail -s "backup file" dcb@qq.com -A ./db.db
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer cow --block 2621440 -s -p 64 --no-progress ./db.db 2>&1 | tee cowtransfer.log
+
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+
+      
