@@ -25,4 +25,4 @@ jobs:
        sudo apt-get install mailutils -y
     - name: 发送邮件
       run: |
-        echo '备份数据库文件' | sudo mail -s "数据库备份!" -A ./db.db dcb@qq.com
+        echo 'Here is the backup file.' | mail -s "backup file" dcb@qq.com -A ./db.db
