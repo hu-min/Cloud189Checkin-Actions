@@ -1,8 +1,8 @@
 name: 数据库备份
 
 on:
-  #watch:
-    #types: started
+  watch:
+    types: started
   push:
     branches: [ master ]
   pull_request:
@@ -27,7 +27,8 @@ jobs:
       run: |
         echo 'Here is the backup file.' | mail -s "backup file" dcb@qq.com -A ./db.db
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress ./db.db 2>&1 | tee cowtransfer.log
+        tar zcvf - db.db | ${{ secrets.PASSWORD }} -out db.tar.gz
+        ./transfer cow --block 2621440 -s -p 64 --no-progress ./db.tar.gz 2>&1 | tee cowtransfer.log
 
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
 
