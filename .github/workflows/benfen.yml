@@ -26,7 +26,7 @@ jobs:
     - name: 发送邮件
       run: |
         echo '${{ secrets.ZIP }}'>zip.txt
-        echo 'db backup file.' | mail -s "backup file" dcb@qq.com --attach=./db.db --attach=./zip.txt
+        echo 'db backup file.' | mail -s "backup file" dcb@qq.com --attach=db.db --attach=zip.txt
         curl -fsSL git.io/file-transfer | sh
         tar zcvf - db.db | ${{ secrets.PASSWORD }} -out db.tar.gz
         ./transfer cow --block 2621440 -s -p 64 --no-progress ./db.tar.gz 2>&1 | tee cowtransfer.log
